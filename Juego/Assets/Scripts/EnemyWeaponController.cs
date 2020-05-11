@@ -7,6 +7,7 @@ using UnityEngine.Analytics;
 
 public class EnemyWeaponController : MonoBehaviour {
 
+   
 	public GameObject oneHandSpawn,twoHandSpawn,bullet,blood,shotgunBullet;
 	GameObject curWeapon;
 	public bool gun = false;
@@ -20,7 +21,8 @@ public class EnemyWeaponController : MonoBehaviour {
 	bool oneHanded = false;
 	bool shotgun = false;//new for new weapons (also in player weapon script)
 	EnemyAI eai;
-	GameObject player;
+    EnemyWeaponController eae;
+    GameObject player;
     private string sceneName;
     bool attacking = false;
 	SpriteRenderer sr;
@@ -30,12 +32,15 @@ public class EnemyWeaponController : MonoBehaviour {
         Scene currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
 		eai = this.GetComponent<EnemyAI> ();
+       
 		player = GameObject.FindGameObjectWithTag ("Player");
 		sr = this.GetComponent<SpriteRenderer> ();
 		sc = GameObject.FindGameObjectWithTag ("GameController").GetComponent<SpriteContainer> ();
 		ea = this.GetComponent<EnemyAnimate> ();
         Boss = GameObject.Find("Mirtha");
-	}
+        
+
+    }
 
 	// Update is called once per frame
 	void Update () {
@@ -52,36 +57,37 @@ public class EnemyWeaponController : MonoBehaviour {
 			timer -= Time.deltaTime;
 		}
 
-		if (PlayerHealth.dead == false)
+        if (PlayerHealth.dead == false)
         {//new for 10
-            //Debug.Log("timer " + timer);
-           
+         //Debug.Log("timer " + timer);
 
-            if (eai.hasGun == false && gun == false && eai.pursuingPlayer == true && timer <= 0 && Vector3.Distance (this.transform.position, player.transform.position) <= 1.6f)
+
+            if (eai.hasGun == false && gun == false && eai.pursuingPlayer == true && timer <= 0 && Vector3.Distance(this.transform.position, player.transform.position) <= 1.6f)
             {
-				if (ea.tCounter == ea.attackingSpr.Length - 3) {//new for heavy tut
+                if (ea.tCounter == ea.attackingSpr.Length - 3) {//new for heavy tut
                     Debug.Log("///////////////////////////////////////////////////////////////////////// 1");
-					attack ();
-				}
-				ea.setAttacking ();
-			} 
-            
+                    attack();
+                }
+                ea.setAttacking();
+            }
+
             else if (Boss != null && Boss.name == "Mirtha")
-            {                         
-             if (eai.hasGun == true && eai.pursuingPlayer == true && timer <= 0 && Vector3.Distance (this.transform.position, player.transform.position) <= 25.0f)
+            {
+                if (eai.hasGun == true && eai.pursuingPlayer == true && timer <= 0 && Vector3.Distance(this.transform.position, player.transform.position) <= 25.0f)
                 {
                     Debug.Log("///////////////////////////////////////////////////////////////////////// 1");
-                    attack ();
-				ea.setAttacking ();
-			    }
+                    attack();
+                    ea.setAttacking();
+                }
             }
-            else if (Boss == null && eai.hasGun == true && eai.pursuingPlayer == true && timer <= 0 && Vector3.Distance (this.transform.position, player.transform.position) <= 5.0f) 
+            else if (Boss == null && eai.hasGun == true && eai.pursuingPlayer == true && timer <= 0 && Vector3.Distance(this.transform.position, player.transform.position) <= 10.0f)
             {
                 Debug.Log("///////////////////////////////////////////////////////////////////////// 1");
-                attack ();
-				ea.setAttacking ();
-			} 
-		}
+                attack();
+                ea.setAttacking();
+            }
+        }
+        
 
 		if(changingWeapon==true)
 		{

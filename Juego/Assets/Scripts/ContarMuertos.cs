@@ -13,7 +13,7 @@ public class ContarMuertos : MonoBehaviour {
     string sceneName;
     public static int contMuertos;
     public static string armaPlayer;
-    
+  
 
     // Use this for initialization
     void Start () {
@@ -30,6 +30,7 @@ public class ContarMuertos : MonoBehaviour {
         deadTime = new float[enemies.Length];
         deadName = new string[enemies.Length];
         contMuertos = 0;
+
         
 
     }

@@ -16,7 +16,8 @@ public class PlayerHealth : MonoBehaviour {
     private bool flagdead = false;
     public GameObject elevatorPosition;
     Vector3 initialPosition;
-    
+     
+
 
 	void awake()
 	{
@@ -25,12 +26,14 @@ public class PlayerHealth : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        
         Scene currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
         
         
         if (sceneName == "Level10")
         {
+            
             initialPosition = this.gameObject.transform.position;
 
             if (GameManager.check10 == true)
