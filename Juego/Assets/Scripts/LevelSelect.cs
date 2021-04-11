@@ -11,11 +11,12 @@ public class LevelSelect : MonoBehaviour {
     public void PlayMenu()
     {
         SceneManager.LoadScene("Menu");
-        
+
     }
 
     public void PlayLevel(int level)
     {
+        Debug.Log("Se selecciona un nivel específico, aqui se inserta el SeleccionarNivel");
         Analytics.CustomEvent("SeleccionarNivel", new Dictionary<string, object>
         {  { "nivel", level }   }
        );
@@ -23,5 +24,5 @@ public class LevelSelect : MonoBehaviour {
 
     }
 
-   
+
 }

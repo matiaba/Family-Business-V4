@@ -5,7 +5,7 @@ using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 using UnityEngine.Analytics;
 
-public class VideoPlay : MonoBehaviour {    
+public class VideoPlay : MonoBehaviour {
 
     public static VideoPlayer videoInicial;
     bool empezar = false;
@@ -18,86 +18,86 @@ public class VideoPlay : MonoBehaviour {
     void Start()
     {
         Scene currentScene = SceneManager.GetActiveScene();
-        sceneName = currentScene.name;    
-        videoInicial = GameObject.Find("Video Player").GetComponent<VideoPlayer>();        
+        sceneName = currentScene.name;
+        videoInicial = GameObject.Find("Video Player").GetComponent<VideoPlayer>();
         camAnimacion.SetActive(false);
 
-        switch (sceneName) { 
+        switch (sceneName) {
             case "Credits":
                 videoInicial.url = System.IO.Path.Combine(Application.streamingAssetsPath, "Cutscene - Creditos.mp4");
             break;
 
             case "Tutorial":
-        
+
                 videoInicial.url = System.IO.Path.Combine(Application.streamingAssetsPath, "Escena 1 - Tutorial.mp4");
                 showoOne = GameManager.SaltearNivel0;
                 break;
 
 
             case "Level1":
-        
+
                 videoInicial.url = System.IO.Path.Combine(Application.streamingAssetsPath, "Cutscene - Nivel 1.mp4");
                 showoOne = GameManager.SaltearNivel1;
                 break;
 
-            case "Level2": 
-        
+            case "Level2":
+
                videoInicial.url = System.IO.Path.Combine(Application.streamingAssetsPath, "Cutscene - Nivel 2.mp4");
                 showoOne = GameManager.SaltearNivel2;
                 break;
 
             case "Level3":
-        
+
                 videoInicial.url = System.IO.Path.Combine(Application.streamingAssetsPath, "Cutscene - Nivel 3.mp4");
                 showoOne = GameManager.SaltearNivel3;
                 break;
 
             case "Level4":
-        
+
                videoInicial.url = System.IO.Path.Combine(Application.streamingAssetsPath, "Cutscene - Nivel 4.mp4");
                 showoOne = GameManager.SaltearNivel4;
                 break;
             case "Level5":
-        
+
                 videoInicial.url = System.IO.Path.Combine(Application.streamingAssetsPath, "Cutscene - Nivel 5.mp4");
                 showoOne = GameManager.SaltearNivel5;
                 break;
             case "Level6":
-        
+
                 videoInicial.url = System.IO.Path.Combine(Application.streamingAssetsPath, "Cutscene - Nivel 6.mp4");
 
                 showoOne = GameManager.SaltearNivel6;
                 break;
             case "Level7":
-        
+
                 videoInicial.url = System.IO.Path.Combine(Application.streamingAssetsPath, "Cutscene - Nivel 7.mp4");
 
                 showoOne = GameManager.SaltearNivel7; break;
             case "Level8":
-        
+
                videoInicial.url = System.IO.Path.Combine(Application.streamingAssetsPath, "Cutscene - Nivel 8.mp4");
                 showoOne = GameManager.SaltearNivel8;
                 break;
             case "Level9":
-        
+
                 videoInicial.url = System.IO.Path.Combine(Application.streamingAssetsPath, "Cutscene - Nivel 9.mp4");
                 showoOne = GameManager.SaltearNivel9;
                 break;
             case "Level10":
-        
+
               videoInicial.url = System.IO.Path.Combine(Application.streamingAssetsPath, "Cutscene - Nivel 10.mp4");
                 showoOne = GameManager.SaltearNivel10;
                 break;
         }
-                
-        videoInicial.Play();        
-        
+
+        videoInicial.Play();
+
     }
 
 
     // Update is called once per frame
     void Update()
-    {       
+    {
 
         if (sceneName != "Credits")
         {
@@ -105,7 +105,7 @@ public class VideoPlay : MonoBehaviour {
             {
                 if (sceneName == "Level8")
                 {
-                    
+
                     dog1.GetComponent<AudioSource>().mute = true;
                 }
 
@@ -115,11 +115,11 @@ public class VideoPlay : MonoBehaviour {
 
                 if (Input.GetKeyDown(KeyCode.Mouse0) || showoOne)
                 {
-					
+
                     if (!showoOne )
                     {
-                        // mandar el evento de salter
-
+                        // mandar el evento de saltar
+                        Debug.Log("Saltea el cutscene. Aca está SaltarCutScene");
 						switch (sceneName)
 						{
 						case "Tutorial":
@@ -157,8 +157,8 @@ public class VideoPlay : MonoBehaviour {
 							break;
 						}
                     }
-                       
-                    
+
+
                     videoInicial.Stop();
                     camAnimacion.SetActive(false);
                     Time.timeScale = 1;
@@ -177,8 +177,8 @@ public class VideoPlay : MonoBehaviour {
             {
                 videoInicial.Stop();
 
-                // mandar el evento de lo vio hasta el final
-
+                // mandar el evento si lo vio hasta el final
+                Debug.Log("Finaliza el cutscene. Aca está VerCutScene");
                 switch (sceneName)
                 {
                     case "Tutorial":
@@ -242,8 +242,8 @@ public class VideoPlay : MonoBehaviour {
                     empezar = true;
 
                  }
-            
-                     
+
+
             }
 
         }
@@ -253,7 +253,7 @@ public class VideoPlay : MonoBehaviour {
             if (videoInicial.isPlaying == true)
             {
                 camAnimacion.SetActive(true);
-                
+
             }
 
             else
@@ -264,5 +264,5 @@ public class VideoPlay : MonoBehaviour {
 
 
     }
-   
+
 }
