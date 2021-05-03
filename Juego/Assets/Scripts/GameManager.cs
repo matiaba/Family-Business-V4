@@ -72,6 +72,17 @@ public class GameManager : MonoBehaviour {
     public static int noquearWinchester = 0;
     public static int noquearColt = 0;
     public static int noquearThompson = 0;
+
+    public static int logronivel1 = 0;
+    public static int logronivel2 = 0;
+    public static int logronivel3 = 0;
+    public static int logronivel4 = 0;
+    public static int logronivel5 = 0;
+    public static int logronivel6 = 0;
+    public static int logronivel7 = 0;
+    public static int logronivel8 = 0;
+    public static int logronivel9 = 0;
+    public static int logronivel10 = 0;
     // fin de variables para experimento
 
     private void Awake()

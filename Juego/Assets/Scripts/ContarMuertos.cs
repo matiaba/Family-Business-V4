@@ -7,13 +7,13 @@ using UnityEngine.Analytics;
 
 public class ContarMuertos : MonoBehaviour {
 
-    public GameObject[] enemies;   
+    public GameObject[] enemies;
     public float[] deadTime;
     public string[] deadName;
     string sceneName;
     public static int contMuertos;
     public static string armaPlayer;
-  
+
 
     // Use this for initialization
     void Start () {
@@ -23,7 +23,7 @@ public class ContarMuertos : MonoBehaviour {
         GameObject[] dogs = GameObject.FindGameObjectsWithTag("Dog");
         GameObject[] heavies = GameObject.FindGameObjectsWithTag("Heavy");
         GameObject[] enemies1 = GameObject.FindGameObjectsWithTag("Enemy");
-        enemies = new GameObject[dogs.Length + heavies.Length + enemies1.Length];        
+        enemies = new GameObject[dogs.Length + heavies.Length + enemies1.Length];
         dogs.CopyTo(enemies, 0);
         heavies.CopyTo(enemies, dogs.Length);
         enemies1.CopyTo(enemies, (dogs.Length) + (heavies.Length));
@@ -31,15 +31,15 @@ public class ContarMuertos : MonoBehaviour {
         deadName = new string[enemies.Length];
         contMuertos = 0;
 
-        
+
 
     }
-	
+
 	// Update is called once per frame
 	void Update () {
         areAllEnemiesDead();
         //Debug.Log(Time.timeSinceLevelLoad);
-        
+
 
     }
 
@@ -51,7 +51,7 @@ public class ContarMuertos : MonoBehaviour {
             {
                 contMuertos++;
                 deadName[x] = enemies[x].name;
-                deadTime[x] = Time.timeSinceLevelLoad;                
+                deadTime[x] = Time.timeSinceLevelLoad;
 
                 int level;
                 if (sceneName == "Tutorial")
@@ -62,13 +62,13 @@ public class ContarMuertos : MonoBehaviour {
                 {
                     level = Utils.LevelFromSceneName(sceneName);
 
-                }                
+                }
 
                 Debug.Log("nivel de Matar " + level);
                 Debug.Log("enemigo de Matar " + deadName[x]);
                 Debug.Log("arma de Matar " + armaPlayer);
-                Debug.Log("tiempo de Matar " + deadTime[x]);                
-                Debug.Log("Insertar evento de Matar aqui");                 
+                Debug.Log("tiempo de Matar " + deadTime[x]);
+                Debug.Log("Insertar evento de Matar aqui");
 
                 Analytics.CustomEvent("Matar", new Dictionary<string, object>
                 {  { "nivel", level },
@@ -80,7 +80,7 @@ public class ContarMuertos : MonoBehaviour {
                 );
                 armaPlayer = null;
 
-                
+
             }
 
         }

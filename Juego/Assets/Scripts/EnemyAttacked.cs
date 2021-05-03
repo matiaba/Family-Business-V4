@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Analytics;
+using System;
 
 public class EnemyAttacked : MonoBehaviour {
 	public Sprite knockedDown,stabbed,bulletWound,backUp;
 	public GameObject bloodPool,bloodSpurt,bloodSpray;
+	public GameObject enemiesperlevel;
 	SpriteRenderer sr;
 	bool EnemyKnockedDown=false;
 	float knockDownTimer = 3.0f;
@@ -40,7 +42,16 @@ public class EnemyAttacked : MonoBehaviour {
 
 	void knockDown()
 	{
+				//
+				 List<string> listenemies = enemiesperlevel.gameObject.GetComponent<ContadorEnemigosNivel>().mylist;
+					if (listenemies.Contains(this.gameObject.name)){
 
+					}
+					else{
+						listenemies.Add(this.gameObject.name);
+					}
+
+				//
         //Debug.Log("El enemigo nockeado es " + nombreEnemigo);
         int level;
 
