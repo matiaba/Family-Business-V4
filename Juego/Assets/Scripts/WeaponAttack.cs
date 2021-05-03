@@ -36,19 +36,19 @@ public class WeaponAttack : MonoBehaviour {
         pa = this.GetComponent<PlayerAnimate> ();
 		sc = GameObject.FindGameObjectWithTag ("GameController").GetComponent<SpriteContainer> ();
 	}
-	
+
 
 	void Update () {
-		
+
 
 		if (timer > 0) {
 			timer -= Time.deltaTime;
 		}
 
 		if(Input.GetMouseButton(0) && timer<=0)
-		{           
+		{
                 attack();
-            
+
 		}
 		if(Input.GetMouseButtonDown(0))
 		{
@@ -63,7 +63,7 @@ public class WeaponAttack : MonoBehaviour {
 			if (curWeapon.activeInHierarchy == false) {
 				if (Input.GetMouseButtonDown (1) && changingWeapon == false && CutsceneDisplay.anyCutsceneDisplaying == false) {
 					dropWeapon ();
-                    
+
                 }
 			}
 		}
@@ -114,7 +114,7 @@ public class WeaponAttack : MonoBehaviour {
 	}
 
 	public void attack()
-	{        
+	{
 		if (gun == true && curWepScr.ammo > 0)
         {
             //NEW STUFF FOR 16
@@ -123,7 +123,7 @@ public class WeaponAttack : MonoBehaviour {
 			dir.x = Vector2.right.x;
 			dir.y = Vector2.right.y;
 			dir.z = 0;
-	
+
 
 			if (oneHanded == true)
             {
@@ -145,10 +145,10 @@ public class WeaponAttack : MonoBehaviour {
 
                         foreach (Bullet b in bullets)
                         {
-                        b.arma = curWepScr.name; // o el arma que sea                        
+                        b.arma = curWepScr.name; // o el arma que sea
                         Debug.Log("El arma del player es: " + b.arma);
                         ContarMuertos.armaPlayer = b.arma;
-                        }                                                
+                        }
                         //Finaliza prueba
                 }
 
@@ -158,7 +158,7 @@ public class WeaponAttack : MonoBehaviour {
             else
             {
 			    if (Shotgun == false)
-                {   
+                {
                     //new for new weapons
                     Bullet bl = Instantiate(bullet, twoHandSpawn.transform.position, this.transform.rotation).GetComponent<Bullet>();
                     bl.arma = curWepScr.name;
@@ -173,7 +173,7 @@ public class WeaponAttack : MonoBehaviour {
 
                         foreach (Bullet b in bullets)
                         {
-                            b.arma = curWepScr.name; // o el arma que sea                        
+                            b.arma = curWepScr.name; // o el arma que sea
                             Debug.Log("El arma del player es: " + b.arma);
                             ContarMuertos.armaPlayer = b.arma;
                         }
@@ -196,7 +196,7 @@ public class WeaponAttack : MonoBehaviour {
 			//NEW STUFF FOR 16
 		}
 		else
-        {			
+        {
 			pa.attack ();//NEW STUFF FOR 16
 			//melee attack
 			int layerMask = 1<<9;
@@ -218,7 +218,7 @@ public class WeaponAttack : MonoBehaviour {
 					if (ray.collider.isTrigger == true && ray.collider.gameObject.tag == "Enemy")
                     {
                         //new for execute
-						ray.collider.gameObject.GetComponent<EnemyAttacked> ().execute (); 
+						ray.collider.gameObject.GetComponent<EnemyAttacked> ().execute ();
                         if (curWepScr == null)
                         {
                             ContarMuertos.armaPlayer = "sin arma";
@@ -229,8 +229,8 @@ public class WeaponAttack : MonoBehaviour {
                             ContarMuertos.armaPlayer = curWepScr.name;
                             Debug.Log("Enemigo murio con arma: " + ContarMuertos.armaPlayer);
                         }
-                        
-                        
+
+
                         decideSFX ();
 					}
                     else
@@ -252,15 +252,17 @@ public class WeaponAttack : MonoBehaviour {
                         Debug.Log("nivel de Noquear: " + level);
                         Debug.Log("Enemigo de Noquear sin arma: " + ea.nombreEnemigo);
                         Debug.Log("tiempo de Noquear: " + Time.timeSinceLevelLoad);
-                        Debug.Log("Insertar evento de noquear");
-                        
+                        Debug.Log("Insertar evento de noquear con puño");
+												GameManager.totalNoqueosUnicos += 1;
+												GameManager.noquearPuño = 1;
+
                         Analytics.CustomEvent("Noquear", new Dictionary<string, object>
                         {   { "nivel", level },
-                            { "enemigo", ea.nombreEnemigo },                            
+                            { "enemigo", ea.nombreEnemigo },
                             { "tiempo", Time.timeSinceLevelLoad }
                         }
                         );
-                        
+
                         decideSFX ();
 					}
 				}
@@ -278,7 +280,7 @@ public class WeaponAttack : MonoBehaviour {
 					//Debug.Log (ray.collider.gameObject.tag);
 					if (ray.collider.gameObject.tag == "Enemy")
                     {
-						
+
 						if (ray.collider.isTrigger == true && ray.collider.gameObject.tag == "Enemy")
                         {
 							ray.collider.gameObject.GetComponent<EnemyAttacked> ().execute ();
@@ -296,7 +298,7 @@ public class WeaponAttack : MonoBehaviour {
 
                         else
                         {
-							EnemyAttacked ea = ray.collider.gameObject.GetComponent<EnemyAttacked> ();                            
+							EnemyAttacked ea = ray.collider.gameObject.GetComponent<EnemyAttacked> ();
                             ea.killMelee ();
                             if (curWepScr == null)
                             {
@@ -352,8 +354,8 @@ public class WeaponAttack : MonoBehaviour {
 			setWeapon (null, "", 0.5f, false,false,false);
 			pa.resetSprites ();
             curWepScr = null;
-            
-            
+
+
 		}
 
 	}

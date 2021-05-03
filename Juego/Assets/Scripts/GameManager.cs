@@ -7,8 +7,8 @@ using UnityEngine.Analytics;
 
 public class GameManager : MonoBehaviour {
   //public static GameManager instance;
-  public GameObject objMain;    
-  public Button niveles;  
+  public GameObject objMain;
+  public Button niveles;
   public Button Jugar;
   public Button Controles;
   public Button Creditos;
@@ -18,8 +18,8 @@ public class GameManager : MonoBehaviour {
   public static int curScore = 0;
   public static float tiempoNivel;
   public static float tiempoTotalNivel;
-  public static int level;   
-  public static int lifeBoss = 10;  
+  public static int level;
+  public static int lifeBoss = 10;
   public static float timecont1;
   public static int muertes = 0;
   public static int minScore1 = 5500;
@@ -59,6 +59,21 @@ public class GameManager : MonoBehaviour {
     private string sceneName;
     public static Vector3 playerPosition;
 
+    // Variables para experimento
+
+    public static int totalNoqueosUnicos = 0;
+    public static string ultimoEnemigoNoqueadoConArma = "";
+    public static int noquearPuño = 0;
+    public static int noquearMac10 = 0;
+    public static int noquearBowie = 0;
+    public static int noquearSawnOff = 0;
+    public static int noquearBat = 0;
+    public static int noquearMatute = 0;
+    public static int noquearWinchester = 0;
+    public static int noquearColt = 0;
+    public static int noquearThompson = 0;
+    // fin de variables para experimento
+
     private void Awake()
     {
         Time.timeScale = 1;
@@ -66,14 +81,14 @@ public class GameManager : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {                
+    void Start () {
         Scene currentScene = SceneManager.GetActiveScene();
-        sceneName = currentScene.name;        
+        sceneName = currentScene.name;
         if (Time.timeScale == 0)
         {
             contador.SetActive(false);
-        }        
-        
+        }
+
         switch (sceneName)
         {
             case "Menu":
@@ -84,47 +99,47 @@ public class GameManager : MonoBehaviour {
                 Creditos.onClick.AddListener(verCreditos);
                 Debug.Log("Verificacion variable de checkpoint: " + check10);
                 break;
-            case "Tutorial":                
+            case "Tutorial":
                 break;
-            case "Credits":                
+            case "Credits":
                 break;
-            case "Controls":                
+            case "Controls":
                 break;
             case "Level1":
-                //VideoPlay.showoOne = true;                
+                //VideoPlay.showoOne = true;
                 break;
             case "Level2":
-                //VideoPlay.showoOne = true;                
+                //VideoPlay.showoOne = true;
                 break;
             case "Level3":
-                //VideoPlay.showoOne = true;                
+                //VideoPlay.showoOne = true;
                 break;
             case "Level4":
-                //VideoPlay.showoOne = true;                
+                //VideoPlay.showoOne = true;
                 break;
             case "Level5":
-                //VideoPlay.showoOne = true;                
+                //VideoPlay.showoOne = true;
                 break;
             case "Level6":
-                //VideoPlay.showoOne = true;                
+                //VideoPlay.showoOne = true;
                 break;
             case "Level7":
-                //VideoPlay.showoOne = true;                
+                //VideoPlay.showoOne = true;
                 break;
             case "Level8":
-                //VideoPlay.showoOne = true;                
+                //VideoPlay.showoOne = true;
                 break;
             case "Level9":
-                //VideoPlay.showoOne = true;                
+                //VideoPlay.showoOne = true;
                 break;
             case "Level10":
-                //VideoPlay.showoOne = true;                
+                //VideoPlay.showoOne = true;
                 break;
         }
-        
-    
+
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -139,14 +154,14 @@ public class GameManager : MonoBehaviour {
                 contador.SetActive(false);
             }
         }
-               
+
     }
-    
+
 
     void seleccion()
     {
         SceneManager.LoadScene("LevelSelect");
-    }    
+    }
 
     void empezarJuego()
     {
@@ -157,7 +172,29 @@ public class GameManager : MonoBehaviour {
                     { "vez", contEmpezar }
                 }
                 );
+        PlayerPrefs.DeleteAll();
+        totalNoqueosUnicos = 0;
+        noquearPuño = 0;
+        noquearMac10 = 0;
+        noquearBowie = 0;
+        noquearSawnOff = 0;
+        noquearBat = 0;
+        noquearMatute = 0;
+        noquearWinchester = 0;
+        noquearColt = 0;
+        noquearThompson = 0;
+        ultimoEnemigoNoqueadoConArma = "";
 
+		Debug.Log("El total de noqueos es " + PlayerPrefs.GetInt("totalnoqueos"));
+		Debug.Log("noquear con puño: " + PlayerPrefs.GetInt("arma1"));
+		Debug.Log("noquear con Bat: " + PlayerPrefs.GetInt("arma2"));
+		Debug.Log("noquear con Bowie: " + PlayerPrefs.GetInt("arma3"));
+		Debug.Log("noquear con Colt: " + PlayerPrefs.GetInt("arma4"));
+		Debug.Log("noquear con Mac10: " + PlayerPrefs.GetInt("arma5"));
+		Debug.Log("noquear con Matute: " + PlayerPrefs.GetInt("arma6"));
+		Debug.Log("noquear con SawnOff: " + PlayerPrefs.GetInt("arma7"));
+		Debug.Log("noquear con Thompson: " + PlayerPrefs.GetInt("arma8"));
+		Debug.Log("noquear con Winchester: " + PlayerPrefs.GetInt("arma9"));
         SceneManager.LoadScene("Tutorial");
         check10 = false;
     }
@@ -185,6 +222,6 @@ public class GameManager : MonoBehaviour {
                 );
         SceneManager.LoadScene("Credits");
 
-       
+
     }
 }

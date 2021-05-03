@@ -24,7 +24,7 @@ public class EnemyAttacked : MonoBehaviour {
         nombreEnemigo = this.gameObject.name;
 
     }
-	
+
 
 	void Update () {
 		if(EnemyKnockedDown==true){
@@ -40,7 +40,7 @@ public class EnemyAttacked : MonoBehaviour {
 
 	void knockDown()
 	{
-        
+
         //Debug.Log("El enemigo nockeado es " + nombreEnemigo);
         int level;
 
@@ -51,9 +51,9 @@ public class EnemyAttacked : MonoBehaviour {
         else
         {
             level = Utils.LevelFromSceneName(sceneName);
-            
+
         }
-        
+
         // aqui se sabe que enemigo esta noqueado
 
         this.GetComponent<EnemyWeaponController> ().dropWeapon ();
@@ -153,7 +153,7 @@ public class EnemyAttacked : MonoBehaviour {
 		this.GetComponent<EnemyAnimate> ().disableLegs ();
 		this.GetComponent<EnemyAnimate> ().enabled =false;
 		this.gameObject.tag = "Dead";
-        
+
 	}
 
 	public void execute()
@@ -175,9 +175,9 @@ public class EnemyAttacked : MonoBehaviour {
 		sr.sprite = stabbed;
 		Instantiate (bloodPool,this.transform.position,this.transform.rotation);
 		Instantiate (bloodSpray,this.transform.position,this.transform.rotation);
-	
+
 		sr.sortingOrder = 2;
-	
+
 		this.GetComponent<EnemyAI>().enabled=false;
 		this.GetComponent<CircleCollider2D>().enabled=false;
 		this.GetComponent<EnemyAnimate> ().disableLegs ();
