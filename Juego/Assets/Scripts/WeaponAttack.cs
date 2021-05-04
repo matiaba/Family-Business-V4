@@ -253,8 +253,7 @@ public class WeaponAttack : MonoBehaviour {
                         Debug.Log("Enemigo de Noquear sin arma: " + ea.nombreEnemigo);
                         Debug.Log("tiempo de Noquear: " + Time.timeSinceLevelLoad);
                         Debug.Log("Insertar evento de noquear con puño");
-												GameManager.totalNoqueosUnicos += 1;
-												GameManager.noquearPuño = 1;
+												GameManager.noquearPuño += 1;
 
                         Analytics.CustomEvent("Noquear", new Dictionary<string, object>
                         {   { "nivel", level },

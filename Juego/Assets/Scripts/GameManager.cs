@@ -56,12 +56,11 @@ public class GameManager : MonoBehaviour {
     public static bool SaltearNivel10 = false;
     public static bool check10;
     public GameObject contador;
+    public GameObject logros;
     private string sceneName;
     public static Vector3 playerPosition;
 
     // Variables para experimento
-
-    public static int totalNoqueosUnicos = 0;
     public static string ultimoEnemigoNoqueadoConArma = "";
     public static int noquearPuño = 0;
     public static int noquearMac10 = 0;
@@ -73,6 +72,7 @@ public class GameManager : MonoBehaviour {
     public static int noquearColt = 0;
     public static int noquearThompson = 0;
 
+    public static int logronivel0 = 0;
     public static int logronivel1 = 0;
     public static int logronivel2 = 0;
     public static int logronivel3 = 0;
@@ -98,6 +98,7 @@ public class GameManager : MonoBehaviour {
         if (Time.timeScale == 0)
         {
             contador.SetActive(false);
+            logros.SetActive(false);
         }
 
         switch (sceneName)
@@ -166,6 +167,17 @@ public class GameManager : MonoBehaviour {
             }
         }
 
+        if (logros != null)
+        {
+            if (Time.timeScale != 0)
+            {
+                logros.SetActive(true);
+            }
+            else
+            {
+                logros.SetActive(false);
+            }
+        }
     }
 
 
@@ -184,7 +196,6 @@ public class GameManager : MonoBehaviour {
                 }
                 );
         PlayerPrefs.DeleteAll();
-        totalNoqueosUnicos = 0;
         noquearPuño = 0;
         noquearMac10 = 0;
         noquearBowie = 0;
@@ -195,6 +206,17 @@ public class GameManager : MonoBehaviour {
         noquearColt = 0;
         noquearThompson = 0;
         ultimoEnemigoNoqueadoConArma = "";
+        logronivel0 = 0;
+        logronivel1 = 0;
+        logronivel2 = 0;
+        logronivel3 = 0;
+        logronivel4 = 0;
+        logronivel5 = 0;
+        logronivel6 = 0;
+        logronivel7 = 0;
+        logronivel8 = 0;
+        logronivel9 = 0;
+        logronivel10 = 0;
 
 		Debug.Log("El total de noqueos es " + PlayerPrefs.GetInt("totalnoqueos"));
 		Debug.Log("noquear con puño: " + PlayerPrefs.GetInt("arma1"));

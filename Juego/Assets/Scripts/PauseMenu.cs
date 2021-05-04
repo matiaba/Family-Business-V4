@@ -99,7 +99,6 @@ public class PauseMenu : MonoBehaviour {
 								Scene currentScene = SceneManager.GetActiveScene();
 								string sceneName = currentScene.name;
                 PlayerPrefs.SetString("nivel", sceneName);
-								PlayerPrefs.SetInt("totalnoqueos", GameManager.totalNoqueosUnicos);
 								PlayerPrefs.SetInt("arma1", GameManager.noquearPuño);
 								PlayerPrefs.SetInt("arma2", GameManager.noquearBat);
 								PlayerPrefs.SetInt("arma3", GameManager.noquearBowie);
@@ -109,8 +108,18 @@ public class PauseMenu : MonoBehaviour {
 								PlayerPrefs.SetInt("arma7", GameManager.noquearSawnOff);
 								PlayerPrefs.SetInt("arma8", GameManager.noquearThompson);
 								PlayerPrefs.SetInt("arma9", GameManager.noquearWinchester);
+								PlayerPrefs.SetInt("logro0", GameManager.logronivel0);
+								PlayerPrefs.SetInt("logro1", GameManager.logronivel1);
+								PlayerPrefs.SetInt("logro2", GameManager.logronivel2);
+								PlayerPrefs.SetInt("logro3", GameManager.logronivel3);
+								PlayerPrefs.SetInt("logro4", GameManager.logronivel4);
+								PlayerPrefs.SetInt("logro5", GameManager.logronivel5);
+								PlayerPrefs.SetInt("logro6", GameManager.logronivel6);
+								PlayerPrefs.SetInt("logro7", GameManager.logronivel7);
+								PlayerPrefs.SetInt("logro8", GameManager.logronivel8);
+								PlayerPrefs.SetInt("logro9", GameManager.logronivel9);
+								PlayerPrefs.SetInt("logro10", GameManager.logronivel10);
 								Debug.Log("The level is " + PlayerPrefs.GetString("nivel"));
-								Debug.Log("El total de noqueos es " + PlayerPrefs.GetInt("totalnoqueos"));
 								Debug.Log("noquear con puño: " + PlayerPrefs.GetInt("arma1"));
 								Debug.Log("noquear con Bat: " + PlayerPrefs.GetInt("arma2"));
 								Debug.Log("noquear con Bowie: " + PlayerPrefs.GetInt("arma3"));
@@ -120,6 +129,17 @@ public class PauseMenu : MonoBehaviour {
 								Debug.Log("noquear con SawnOff: " + PlayerPrefs.GetInt("arma7"));
 								Debug.Log("noquear con Thompson: " + PlayerPrefs.GetInt("arma8"));
 								Debug.Log("noquear con Winchester: " + PlayerPrefs.GetInt("arma9"));
+								Debug.Log("Logro de nivel 0: " + PlayerPrefs.GetInt("logro0"));
+								Debug.Log("Logro de nivel 1: " + PlayerPrefs.GetInt("logro1"));
+								Debug.Log("Logro de nivel 2: " + PlayerPrefs.GetInt("logro2"));
+								Debug.Log("Logro de nivel 3: " + PlayerPrefs.GetInt("logro3"));
+								Debug.Log("Logro de nivel 4: " + PlayerPrefs.GetInt("logro4"));
+								Debug.Log("Logro de nivel 5: " + PlayerPrefs.GetInt("logro5"));
+								Debug.Log("Logro de nivel 6: " + PlayerPrefs.GetInt("logro6"));
+								Debug.Log("Logro de nivel 7: " + PlayerPrefs.GetInt("logro7"));
+								Debug.Log("Logro de nivel 8: " + PlayerPrefs.GetInt("logro8"));
+								Debug.Log("Logro de nivel 9: " + PlayerPrefs.GetInt("logro9"));
+								Debug.Log("Logro de nivel 10: " + PlayerPrefs.GetInt("logro10"));
             }
 
             // Cierra botones de menu

@@ -48,68 +48,67 @@ public class ThrowWeapon : MonoBehaviour {
 		if (col.gameObject.tag == "Enemy") {
 			attacked = col.gameObject.GetComponent<EnemyAttacked> ();
 			attacked.knockDownEnemy();
-            int level;
-            if (sceneName == "Tutorial")
-            {
-                level = 0;
-            }
-            else
-            {
-                level = Utils.LevelFromSceneName(sceneName);
+			int level;
+			if (sceneName == "Tutorial")
+			{
+					level = 0;
+			}
+			else
+			{
+					level = Utils.LevelFromSceneName(sceneName);
 
-            }
+			}
 
-						if (GameManager.ultimoEnemigoNoqueadoConArma != attacked.nombreEnemigo){
-							Debug.Log("nivel de Noquear: " + level);
-							Debug.Log("Nombre de enemigo noqueado: " + attacked.nombreEnemigo);
-							Debug.Log("tiempo de Noquear: " + Time.timeSinceLevelLoad);
-							WeaponPickup weapon = this.GetComponent<WeaponPickup>();
-							Debug.Log("arma de Noquear: " + weapon.name);
-							Debug.Log("Insertar evento de noquear arrojando arma");
+			if (GameManager.ultimoEnemigoNoqueadoConArma != attacked.nombreEnemigo){
+				Debug.Log("nivel de Noquear: " + level);
+				Debug.Log("Nombre de enemigo noqueado: " + attacked.nombreEnemigo);
+				Debug.Log("tiempo de Noquear: " + Time.timeSinceLevelLoad);
+				WeaponPickup weapon = this.GetComponent<WeaponPickup>();
+				Debug.Log("arma de Noquear: " + weapon.name);
+				Debug.Log("Insertar evento de noquear arrojando arma");
 
 
-							switch(weapon.name){
-								case "Bowie":
-									GameManager.noquearBowie = 1;
-									break;
-								case "Colt":
-									GameManager.noquearColt = 1;
-									break;
-								case "Mac10":
-									GameManager.noquearMac10 = 1;
-									break;
-								case "Bat":
-									GameManager.noquearBat = 1;
-									break;
-								case "Thompson":
-									GameManager.noquearThompson = 1;
-									break;
-								case "SawnOff":
-									GameManager.noquearSawnOff = 1;
-									break;
-								case "Winchester":
-									GameManager.noquearWinchester = 1;
-									break;
-								case "Matute":
-									GameManager.noquearMatute = 1;
-									break;
-								default:
-									break;
-							}
+				switch(weapon.name){
+					case "Bowie":
+						GameManager.noquearBowie += 1;
+						break;
+					case "Colt":
+						GameManager.noquearColt += 1;
+						break;
+					case "Mac10":
+						GameManager.noquearMac10 += 1;
+						break;
+					case "Bat":
+						GameManager.noquearBat += 1;
+						break;
+					case "Thompson":
+						GameManager.noquearThompson += 1;
+						break;
+					case "SawnOff":
+						GameManager.noquearSawnOff += 1;
+						break;
+					case "Winchester":
+						GameManager.noquearWinchester += 1;
+						break;
+					case "Matute":
+						GameManager.noquearMatute += 1;
+						break;
+					default:
+						break;
+				}
 
-							Analytics.CustomEvent("Noquear", new Dictionary<string, object>
-							{   { "nivel", level },
-									{ "enemigo", attacked.nombreEnemigo },
-									{ "tiempo", Time.timeSinceLevelLoad }
-							}
-							);
-							GameManager.ultimoEnemigoNoqueadoConArma = attacked.nombreEnemigo;
-							GameManager.totalNoqueosUnicos += 1;
-						}
-            rid.isKinematic = true;
-            Destroy (this);
+				Analytics.CustomEvent("Noquear", new Dictionary<string, object>
+				{   { "nivel", level },
+						{ "enemigo", attacked.nombreEnemigo },
+						{ "tiempo", Time.timeSinceLevelLoad }
+				}
+				);
+				GameManager.ultimoEnemigoNoqueadoConArma = attacked.nombreEnemigo;
+			}
+			rid.isKinematic = true;
+			Destroy (this);
 
-        }
+		}
 		else if(col.gameObject.tag=="Player")
 		{
 
