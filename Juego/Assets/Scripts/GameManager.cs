@@ -257,4 +257,8 @@ public class GameManager : MonoBehaviour {
 
 
     }
+
+    public void loadAchievements(){
+        SceneManager.LoadScene("Logros");
+    }
 }
