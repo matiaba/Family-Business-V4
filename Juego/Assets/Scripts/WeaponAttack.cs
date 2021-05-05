@@ -40,6 +40,12 @@ public class WeaponAttack : MonoBehaviour {
 
 	void Update () {
 
+		if (this.gameObject.GetComponent<WeaponAttack>().gun != true){
+			this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+		}
+		else{
+			this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+		}
 
 		if (timer > 0) {
 			timer -= Time.deltaTime;
