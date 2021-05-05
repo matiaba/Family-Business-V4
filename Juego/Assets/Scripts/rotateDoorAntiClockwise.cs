@@ -19,9 +19,9 @@ public class rotateDoorAntiClockwise : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (Vector3.Distance (player.transform.position, this.gameObject.transform.position) < 1.1f &&other.gameObject.tag == "Enemy") {
-			
+
 			EnemyAttacked ea = other.gameObject.GetComponent<EnemyAttacked> ();
-			ea.knockDownEnemy ();
+			// ea.knockDownEnemy ();
 		}
 	}
 

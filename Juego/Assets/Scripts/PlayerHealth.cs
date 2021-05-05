@@ -16,24 +16,24 @@ public class PlayerHealth : MonoBehaviour {
     private bool flagdead = false;
     public GameObject elevatorPosition;
     Vector3 initialPosition;
-     
+
 
 
 	void awake()
 	{
-        
+
     }
 
 	// Use this for initialization
 	void Start () {
-        
+
         Scene currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
-        
-        
+
+
         if (sceneName == "Level10")
         {
-            
+
             initialPosition = this.gameObject.transform.position;
 
             if (GameManager.check10 == true)
@@ -48,10 +48,10 @@ public class PlayerHealth : MonoBehaviour {
 
             }
         }
-        
+
 
     }
-	
+
 	// Update is called once per frame
 	void Update () {
         //Debug.Log("Tiempo actual de la escena: " + Time.timeSinceLevelLoad);
@@ -60,19 +60,21 @@ public class PlayerHealth : MonoBehaviour {
         if (dead == true) {
             killPlayer();
             GameManager.playerPosition = this.transform.position;
-            
+
             if (flagdead == false)
             {
                 GameManager.muertes += 1;
                 Debug.Log("el numero de muertes es: " + GameManager.muertes);
-                
+
                 flagdead = true;
 
             }
-           
+
 
             if (Input.GetKeyDown (KeyCode.R)) {
                 int level;
+                Debug.Log("El ultimo enemigo fue: " + GameManager.ultimoEnemigoNoqueadoConArma);
+                GameManager.ultimoEnemigoNoqueadoConArma = "";
                 if (sceneName == "Tutorial")
                 {
                     level = 0;
@@ -104,12 +106,12 @@ public class PlayerHealth : MonoBehaviour {
                 Debug.Log("------------------------------------------------- Revive");
                 Debug.Log("revivio personaje");
                 revivePlayer();
-                SceneManager.LoadScene (SceneManager.GetActiveScene().name);//remember to mention new scene manager using thing                                
+                SceneManager.LoadScene (SceneManager.GetActiveScene().name);//remember to mention new scene manager using thing
 
             }
 		}
 	}
-    
+
     void killPlayer()
 	{
 		if (this.GetComponent<PlayerAnimate> ().enabled == true) {
@@ -131,10 +133,10 @@ public class PlayerHealth : MonoBehaviour {
 
 			pm.enabled = false;
 			CircleCollider2D col = this.GetComponent<CircleCollider2D> ();
-			col.enabled = false;            
+			col.enabled = false;
         }
 
-       
+
     }
 
 	void revivePlayer(){
@@ -158,7 +160,7 @@ public class PlayerHealth : MonoBehaviour {
 		pm.enabled = true;
 		CircleCollider2D col = this.GetComponent<CircleCollider2D> ();
 		col.enabled = true;
-       
+
     }
 
 	void OnGUI()
