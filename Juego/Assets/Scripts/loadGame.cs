@@ -27,6 +27,12 @@ public class loadGame : MonoBehaviour {
 		GameManager.logronivel8 = PlayerPrefs.GetInt("logro8");
 		GameManager.logronivel9 = PlayerPrefs.GetInt("logro9");
 		GameManager.logronivel10 = PlayerPrefs.GetInt("logro10");
-		SceneManager.LoadScene(PlayerPrefs.GetString("nivel"));
+		if (PlayerPrefs.GetString("nivel") != "")
+		{
+			SceneManager.LoadScene(PlayerPrefs.GetString("nivel"));
+		}
+		else{
+			SceneManager.LoadScene("Tutorial");
+		}
 	}
 }

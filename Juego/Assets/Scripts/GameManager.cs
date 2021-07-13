@@ -230,6 +230,9 @@ public class GameManager : MonoBehaviour {
 		Debug.Log("noquear con Winchester: " + PlayerPrefs.GetInt("arma9"));
         SceneManager.LoadScene("Tutorial");
         check10 = false;
+
+        // Codigo para mutear hay que hacer un boton en el menu principal y la pausa
+        // AudioListener.volume = 0f;
     }
 
     void verControles()
