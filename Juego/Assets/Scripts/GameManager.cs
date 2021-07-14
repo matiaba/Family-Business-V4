@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour {
     public static bool toggle = true;
     public GameObject contador;
     public GameObject logros;
+    public GameObject muteon;
+    public GameObject muteoff;
     private string sceneName;
     public static Vector3 playerPosition;
 
@@ -178,6 +180,16 @@ public class GameManager : MonoBehaviour {
             {
                 logros.SetActive(false);
             }
+        }
+
+        if (toggle)
+        {
+            muteon.SetActive(true);
+            muteoff.SetActive(false);
+        }
+        else{
+            muteoff.SetActive(true);
+            muteon.SetActive(false);
         }
     }
 
