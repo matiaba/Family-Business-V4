@@ -9,9 +9,10 @@ public class PauseMenu : MonoBehaviour {
 
 	float originalWidth = 1920.0f; //turn these to floats to fix placement issue
 	float originalHeight = 1080.0f;
+	public bool muteButton;
 	Vector3 scale;
     bool paused = false;
-	public GUIStyle text, menu;
+	public GUIStyle text, menu, greenmenu, redmenu;
     public static bool Button;
     SettingsWriter sw;
 	public static float sfxVal = 0.5f,musicVal=0.5f;
@@ -83,10 +84,10 @@ public class PauseMenu : MonoBehaviour {
 		if (paused == true) {
 
 			GUI.Box(new Rect ((originalWidth / 2)-500, (originalHeight / 2) - (500), 200 * 5, 200 * 5),"");
-			GUI.Label (new Rect (originalWidth / 2-250, originalHeight / 2-150, 150, 50), "SFX Vol",text);
-			sfxVal = GUI.HorizontalSlider (new Rect (originalWidth / 2 - 50, originalHeight / 2 - 150, 350, 50), sfxVal, 0.0f, 1.0f);
-			GUI.Label (new Rect (originalWidth / 2-250, originalHeight / 2-100, 250, 50), "Music Vol",text);
-			musicVal = GUI.HorizontalSlider (new Rect (originalWidth / 2 - 50, originalHeight / 2 - 100, 350, 50), musicVal, 0.0f, 1.0f);
+			// GUI.Label (new Rect (originalWidth / 2-250, originalHeight / 2-150, 150, 50), "SFX Vol",text);
+			// sfxVal = GUI.HorizontalSlider (new Rect (originalWidth / 2 - 50, originalHeight / 2 - 150, 350, 50), sfxVal, 0.0f, 1.0f);
+			// GUI.Label (new Rect (originalWidth / 2-250, originalHeight / 2-100, 250, 50), "Music Vol",text);
+			// musicVal = GUI.HorizontalSlider (new Rect (originalWidth / 2 - 50, originalHeight / 2 - 100, 350, 50), musicVal, 0.0f, 1.0f);
 
             // Botones de menu
 
@@ -94,6 +95,24 @@ public class PauseMenu : MonoBehaviour {
             {
                 SceneManager.LoadScene("Menu");
             }
+
+						if (GameManager.toggle)
+							muteButton = GUI.Button(new Rect(originalWidth / 2 - 230, originalHeight - originalHeight + 750, 500, 100), "Mute", greenmenu);
+						else
+							muteButton = GUI.Button(new Rect(originalWidth / 2 - 230, originalHeight - originalHeight + 750, 500, 100), "Mute", redmenu);
+						if (muteButton){
+							GameManager.toggle = !GameManager.toggle;
+							if (GameManager.toggle)
+							{
+								muteButton = GUI.Button(new Rect(originalWidth / 2 - 230, originalHeight - originalHeight + 750, 500, 100), "Mute", greenmenu);
+             		AudioListener.volume = 1f;
+							}
+
+         			else{
+             		AudioListener.volume = 0f;
+								muteButton = GUI.Button(new Rect(originalWidth / 2 - 230, originalHeight - originalHeight + 750, 500, 100), "Mute", redmenu);
+							 }
+						}
 
             // Cierra botones de menu
         }

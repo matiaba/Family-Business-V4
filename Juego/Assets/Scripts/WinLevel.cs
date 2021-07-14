@@ -321,10 +321,16 @@ public class WinLevel : MonoBehaviour
             if (sceneName == "Tutorial")
             {
                 level = 0;
-                lastLevel = int.Parse(PlayerPrefs.GetString("nivel").Substring(5));
-                if (lastLevel < level+1){
+                if (PlayerPrefs.GetString("nivel").Contains("Level")){
+                    lastLevel = int.Parse(PlayerPrefs.GetString("nivel").Substring(5));
+                    if (lastLevel < level+1){
+                        PlayerPrefs.SetString("nivel", "Level" + (level+1));
+                    }
+                }
+                else{
                     PlayerPrefs.SetString("nivel", "Level" + (level+1));
                 }
+
                 PlayerPrefs.SetInt("arma1", GameManager.noquearPuño);
                 PlayerPrefs.SetInt("arma2", GameManager.noquearBat);
                 PlayerPrefs.SetInt("arma3", GameManager.noquearBowie);

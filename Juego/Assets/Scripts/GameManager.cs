@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour {
     public static bool SaltearNivel9 = false;
     public static bool SaltearNivel10 = false;
     public static bool check10;
+    public static bool toggle = true;
     public GameObject contador;
     public GameObject logros;
     private string sceneName;
@@ -188,6 +189,12 @@ public class GameManager : MonoBehaviour {
 
     void empezarJuego()
     {
+        // if (toggle){
+        //     AudioListener.volume = 1f;
+        // }
+        // else{
+        //     AudioListener.volume = 0f;
+        // }
         contEmpezar++;
         Debug.Log("aqui se llama al evento Empezar. El contador es: " + contEmpezar);
         Analytics.CustomEvent("Empezar", new Dictionary<string, object>
@@ -264,4 +271,15 @@ public class GameManager : MonoBehaviour {
     public void loadAchievements(){
         SceneManager.LoadScene("Logros");
     }
+
+    public void ToggleSound()
+     {
+         toggle = !toggle;
+
+         if (toggle)
+             AudioListener.volume = 1f;
+
+         else
+             AudioListener.volume = 0f;
+     }
 }

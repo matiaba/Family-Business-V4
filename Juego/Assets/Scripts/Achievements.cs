@@ -39,55 +39,55 @@ public class Achievements : MonoBehaviour {
 		if (PlayerPrefs.GetInt("arma1") > 0){
 			puños1.GetComponent<Text>().color = new Color(0,219, 0);
 		}
-		if (PlayerPrefs.GetInt("arma1") == 5){
+		if (PlayerPrefs.GetInt("arma1") >= 5){
 			puños5.GetComponent<Text>().color = new Color(0,219, 0);
 		}
 		if (PlayerPrefs.GetInt("arma2") > 0){
 			Bat1.GetComponent<Text>().color = new Color(0,219, 0);
 		}
-		if (PlayerPrefs.GetInt("arma2") == 5){
+		if (PlayerPrefs.GetInt("arma2") >= 5){
 			Bat5.GetComponent<Text>().color = new Color(0,219, 0);
 		}
 		if (PlayerPrefs.GetInt("arma3") > 0){
 			Bowie1.GetComponent<Text>().color = new Color(0,219, 0);
 		}
-		if (PlayerPrefs.GetInt("arma3") == 5){
+		if (PlayerPrefs.GetInt("arma3") >= 5){
 			Bowie5.GetComponent<Text>().color = new Color(0,219, 0);
 		}
 		if (PlayerPrefs.GetInt("arma4") > 0){
 			Colt1.GetComponent<Text>().color = new Color(0,219, 0);
 		}
-		if (PlayerPrefs.GetInt("arma4") == 5){
+		if (PlayerPrefs.GetInt("arma4") >= 5){
 			Colt5.GetComponent<Text>().color = new Color(0,219, 0);
 		}
 		if (PlayerPrefs.GetInt("arma5") > 0){
 			Mac101.GetComponent<Text>().color = new Color(0,219, 0);
 		}
-		if (PlayerPrefs.GetInt("arma5") == 5){
+		if (PlayerPrefs.GetInt("arma5") >= 5){
 			Mac105.GetComponent<Text>().color = new Color(0,219, 0);
 		}
 		if (PlayerPrefs.GetInt("arma6") > 0){
 			Matute1.GetComponent<Text>().color = new Color(0,219, 0);
 		}
-		if (PlayerPrefs.GetInt("arma6") == 5){
+		if (PlayerPrefs.GetInt("arma6") >= 5){
 			Matute5.GetComponent<Text>().color = new Color(0,219, 0);
 		}
 		if (PlayerPrefs.GetInt("arma7") > 0){
 			SawnOff1.GetComponent<Text>().color = new Color(0,219, 0);
 		}
-		if (PlayerPrefs.GetInt("arma7") == 5){
+		if (PlayerPrefs.GetInt("arma7") >= 5){
 			SawnOff5.GetComponent<Text>().color = new Color(0,219, 0);
 		}
 		if (PlayerPrefs.GetInt("arma8") > 0){
 			Thompson1.GetComponent<Text>().color = new Color(0,219, 0);
 		}
-		if (PlayerPrefs.GetInt("arma8") == 5){
+		if (PlayerPrefs.GetInt("arma8") >= 5){
 			Thompson5.GetComponent<Text>().color = new Color(0,219, 0);
 		}
 		if (PlayerPrefs.GetInt("arma9") > 0){
 			Winchester1.GetComponent<Text>().color = new Color(0,219, 0);
 		}
-		if (PlayerPrefs.GetInt("arma9") == 5){
+		if (PlayerPrefs.GetInt("arma9") >= 5){
 			Winchester5.GetComponent<Text>().color = new Color(0,219, 0);
 		}
 		if (PlayerPrefs.GetInt("logro0") == 1){
