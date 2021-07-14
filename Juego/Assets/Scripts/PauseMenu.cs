@@ -97,20 +97,20 @@ public class PauseMenu : MonoBehaviour {
             }
 
 						if (GameManager.toggle)
-							muteButton = GUI.Button(new Rect(originalWidth / 2 - 230, originalHeight - originalHeight + 750, 500, 100), "Mute", greenmenu);
-						else
 							muteButton = GUI.Button(new Rect(originalWidth / 2 - 230, originalHeight - originalHeight + 750, 500, 100), "Mute", redmenu);
+						else
+							muteButton = GUI.Button(new Rect(originalWidth / 2 - 230, originalHeight - originalHeight + 750, 500, 100), "Mute", greenmenu);
 						if (muteButton){
 							GameManager.toggle = !GameManager.toggle;
 							if (GameManager.toggle)
 							{
-								muteButton = GUI.Button(new Rect(originalWidth / 2 - 230, originalHeight - originalHeight + 750, 500, 100), "Mute", greenmenu);
+								muteButton = GUI.Button(new Rect(originalWidth / 2 - 230, originalHeight - originalHeight + 750, 500, 100), "Mute", redmenu);
              		AudioListener.volume = 1f;
 							}
 
          			else{
              		AudioListener.volume = 0f;
-								muteButton = GUI.Button(new Rect(originalWidth / 2 - 230, originalHeight - originalHeight + 750, 500, 100), "Mute", redmenu);
+								muteButton = GUI.Button(new Rect(originalWidth / 2 - 230, originalHeight - originalHeight + 750, 500, 100), "Mute", greenmenu);
 							 }
 						}
 

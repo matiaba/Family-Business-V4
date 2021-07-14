@@ -182,7 +182,7 @@ public class GameManager : MonoBehaviour {
             }
         }
 
-        if (toggle)
+        if (!toggle)
         {
             muteon.SetActive(true);
             muteoff.SetActive(false);
