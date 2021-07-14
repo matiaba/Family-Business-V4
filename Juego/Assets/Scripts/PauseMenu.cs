@@ -84,10 +84,10 @@ public class PauseMenu : MonoBehaviour {
 		if (paused == true) {
 
 			GUI.Box(new Rect ((originalWidth / 2)-500, (originalHeight / 2) - (500), 200 * 5, 200 * 5),"");
-			// GUI.Label (new Rect (originalWidth / 2-250, originalHeight / 2-150, 150, 50), "SFX Vol",text);
-			// sfxVal = GUI.HorizontalSlider (new Rect (originalWidth / 2 - 50, originalHeight / 2 - 150, 350, 50), sfxVal, 0.0f, 1.0f);
-			// GUI.Label (new Rect (originalWidth / 2-250, originalHeight / 2-100, 250, 50), "Music Vol",text);
-			// musicVal = GUI.HorizontalSlider (new Rect (originalWidth / 2 - 50, originalHeight / 2 - 100, 350, 50), musicVal, 0.0f, 1.0f);
+			GUI.Label (new Rect (originalWidth / 2-250, originalHeight / 2-150, 150, 50), "SFX Vol",text);
+			sfxVal = GUI.HorizontalSlider (new Rect (originalWidth / 2 - 50, originalHeight / 2 - 150, 350, 50), sfxVal, 0.0f, 1.0f);
+			GUI.Label (new Rect (originalWidth / 2-250, originalHeight / 2-100, 250, 50), "Music Vol",text);
+			musicVal = GUI.HorizontalSlider (new Rect (originalWidth / 2 - 50, originalHeight / 2 - 100, 350, 50), musicVal, 0.0f, 1.0f);
 
             // Botones de menu
 
